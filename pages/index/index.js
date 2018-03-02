@@ -52,8 +52,16 @@ Page({
     })
   },
   showSysInfo: function(){
-    wx.navigateTo({
-      url: '../system-info/system-info',
+    let sysInfo = wx.getSystemInfoSync()
+
+    wx.showModal({
+      title: '设备信息',
+      content: JSON.stringify(sysInfo, "\r\n", 2),
+      showCancel: false
     })
+
+    // wx.navigateTo({
+    //   url: '../system-info/system-info',
+    // })
   }
 })

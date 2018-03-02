@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<button bindtap='showSysInfo'>设备信息</button>
+<view class="btn-area" style="text-align:center">
+  <navigator url='../system-info/system-info'>N设备信息</navigator>
+  <navigator url='../tax-calculator/tax-calculator'>计算器</navigator>
+</view>
+<view class="container">
+  
+
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  
+
+
+  <view class="usermotto">
+    
+
+    <text class="user-motto">{{motto}}</text>
+    
+  </view>
+</view>

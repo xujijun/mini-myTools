@@ -8,8 +8,13 @@ Page({
     totalIncome: 0,
     socialSecurityDeduction: 0,
     housingFundDeduction: 0,
+    deductedIncome: 0,
     tax: 0,
-    netIncome: 0
+    tax7000: 0,
+    tax10000: 0,
+    saved7000: 0,
+    saved10000: 0
+    //netIncome: 0
   },
 
   backToHome: function () {
@@ -41,16 +46,23 @@ Page({
     console.log(this.data)
 
     let deduction = this.data.socialSecurityDeduction + this.data.housingFundDeduction
-    let _tax = this.calIncomeTax20110901(this.data.totalIncome - deduction)
+    let _deductedIncome = this.data.totalIncome - deduction
+    let _tax = this.calIncomeTax20110901(_deductedIncome, 3500)
+    let _tax7000 = this.calIncomeTax20110901(_deductedIncome, 7000)
+    let _tax10000 = this.calIncomeTax20110901(_deductedIncome, 10000)
 
     this.setData({
       tax: _tax,
-      netIncome: this.data.totalIncome - _tax
+      tax7000: _tax7000,
+      tax10000: _tax10000,
+      saved7000: (_tax - _tax7000).toFixed(2),
+      saved10000: (_tax - _tax10000).toFixed(2),
+      deductedIncome: _deductedIncome
     })
   },
 
-  calIncomeTax20110901: function(deductedIncome){
-    let _income = deductedIncome - 3500;
+  calIncomeTax20110901: function(deductedIncome, threshold){
+    let _income = deductedIncome - threshold;
     let tax=0;
  
     if (_income<=0)
@@ -69,6 +81,6 @@ Page({
       tax = _income * 0.35 - 5505;
     else tax = _income * 0.45 - 13505; 
  
-    return tax;
+    return tax.toFixed(2);
   }
 })

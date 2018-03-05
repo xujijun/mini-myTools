@@ -12,8 +12,28 @@
 
   <button class='weui-btn' type='primary' bindtap='calculateIncomeTax'>开始计算</button>
   
-  <view style="flex-direction:row;">税：<text>{{tax}}</text></view>
-  <view style="flex-direction:row;">到手（不含公积金）：<text>{{netIncome}}</text></view>
+  <view style='margin-bottom: 30rpx;'>
+    <view style="flex-direction:row;">（起征标准：3500）税：<text>{{tax}}</text></view>
+    <view style="flex-direction:row;">到手（不含公积金）：<text>{{deductedIncome - tax}}</text></view>
+  </view>
+  
+  <view style='margin-bottom: 30rpx;'>
+    <view style="flex-direction:row;">（起征标准：7000）税：<text>{{tax7000}}</text></view>
+    <view style="flex-direction:row;">
+      到手（不含公积金）：
+      <text>{{deductedIncome - tax7000}}</text>
+    </view>
+    <text wx:if="{{tax>=0.01}}" style='color:green'>(可以少交：{{saved7000}})</text>
+  </view>
+
+  <view style='margin-bottom: 30rpx;'>
+    <view style="flex-direction:row;">（起征标准：10000）税：<text>{{tax10000}}</text></view>
+    <view style="flex-direction:row;">
+      到手（不含公积金）：
+      <text>{{deductedIncome - tax10000}}</text>
+    </view>
+    <text wx:if="{{tax>=0.01}}" style='color:green'>(可以少交：{{saved10000}})</text>
+  </view>
 
   <button bindtap='backToHome'>返回</button>
 </view>

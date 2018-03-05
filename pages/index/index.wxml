@@ -1,11 +1,12 @@
 <!--index.wxml-->
 
 <view class="weui-btn-area">
-  <button bindtap='showSysInfo' class='weui-form-preview__btn_primary'>设备信息</button>
-  <button bindtap='gotoTaxCalculator' class='weui-form-preview__btn_primary'>计算器</button>
+  <button class='weui-btn' type='primary' bindtap='navTo' data-link="../tax-calculator/tax-calculator">个税计算器</button>
+  <button class='weui-btn' type='primary' bindtap='showSysInfo'>设备信息</button>
+
 </view>
-<view class="container">
-  
+<!-- <view class="container">
+ 
 
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
@@ -14,13 +15,4 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  
-
-
-  <view class="usermotto">
-    
-
-    <text class="user-motto">{{motto}}</text>
-    
-  </view>
-</view>
+</view> -->

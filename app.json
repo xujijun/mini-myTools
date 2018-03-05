@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/system-info/system-info",
     "pages/tax-calculator/tax-calculator"
   ],
   "window": {
